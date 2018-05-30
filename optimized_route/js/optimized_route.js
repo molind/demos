@@ -68,20 +68,11 @@ app.run(function($rootScope) {
 
 //hooks up to the div whose data-ng-controller attribute matches this name
 app.controller('OptimizedRouteController', function($scope, $rootScope, $sce, $http) {
-  //map layers & default layer are defined in the index.html
-  var baseMaps = {
-    "Road" : road,
-    "Zinc" : zinc,
-    "Cycle" : cycle,
-    "Outdoors" : outdoors,
-    "Transit" : transit
-  };
-
   //leaflet slippy map
   var map = L.map('map', {
     zoom : $rootScope.geobase.zoom,
     zoomControl : true,
-    layers : [ (typeof defaultMapLayer != undefined ? defaultMapLayer : road) ],
+    layers : [ defaultMapLayer ],
     center : [ $rootScope.geobase.lat, $rootScope.geobase.lon ]
   });
   
@@ -98,8 +89,7 @@ app.controller('OptimizedRouteController', function($scope, $rootScope, $sce, $h
   };
 
   L.control.geocoder('search-8LtGSDw', options).addTo(map);
-  L.control.layers(baseMaps, null).addTo(map);
-
+ 
   // If iframed, we're going to have to disable some of the touch interaction
   // to not hijack page scroll. See Stamen's Checklist for Maps: http://content.stamen.com/stamens-checklist-for-maps
   if (window.self !== window.top) {

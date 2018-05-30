@@ -66,13 +66,8 @@ app.run(function($rootScope) {
 
 //hooks up to the div whose data-ng-controller attribute matches this name
 app.controller('OptimizedRouteController', function($scope, $rootScope, $sce, $http) {
-    var road = L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var road = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution : '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributers'
-    }),
-    cycle = L.tileLayer('http://b.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=f8f13e0070864ac3ad996f7bf7beb9af', {
-        attribution : 'Maps &copy; <a href="http://www.thunderforest.com">Thunderforest, </a>;Data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }), elevation = L.tileLayer('http://b.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f8f13e0070864ac3ad996f7bf7beb9af', {
-        attribution : 'Maps &copy; <a href="http://www.thunderforest.com">Thunderforest, </a>;Data &copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     });
 
     var mapMatchingControl;
@@ -121,9 +116,7 @@ app.controller('OptimizedRouteController', function($scope, $rootScope, $sce, $h
     };
 
     var baseMaps = {
-        "Road" : road,
-        "Cycle" : cycle,
-        "Elevation" : elevation
+        "Road" : road
     };
 
     //leaflet slippy map

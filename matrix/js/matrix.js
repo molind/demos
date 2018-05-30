@@ -1,9 +1,9 @@
 var app = angular.module('matrix', []);
 var hash_params = L.Hash.parseHash(location.hash);
 
-var serviceUrl = "https://matrix.mapzen.com/";
 var envServer = "production";
 var envToken = accessToken.prod;
+var serviceUrl = "https://cdn.getyourmap.com/route/5cfd37f7-a316-41b3-a516-910514fb0348/";
 var sentManyToManyEnd = false;
 
 function selectEnv() {
@@ -53,21 +53,14 @@ app.run(function($rootScope) {
 //hooks up to the div whose data-ng-controller attribute matches this name
 app.controller('MatrixController', function($scope, $rootScope, $sce, $http) {
   //map layers & default layer are defined in the index.html
-  var baseLayers = {
-    "Road" : road,
-    "Cycle" : cycle,
-    "Outdoors" : outdoors,
-    "Zinc (Mapzen)" : zinc
-  };
-
   var manhattan = [40.7510, -73.9783];
-  L.Mapzen.apiKey = 'valhalla-UdVXVeg';
-  var map = L.Mapzen.map('map', {
+  var map = L.map('map', {
     zoom : $rootScope.geobase.zoom,
     zoomControl : true,
-    tangramOptions: defaultlayer,
-    fallbackTile: road
   }).setView(manhattan, 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution : '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributers'
+  }).addTo(map);
 
   // If iframed, we're going to have to disable some of the touch interaction
   // to not hijack page scroll. See Stamen's Checklist for Maps: http://content.stamen.com/stamens-checklist-for-maps
@@ -81,8 +74,6 @@ app.controller('MatrixController', function($scope, $rootScope, $sce, $http) {
   };
 
   L.control.geocoder('search-8LtGSDw', options).addTo(map);
-  L.control.layers(baseLayers, null).addTo(map);
-
   // If iframed, we're going to have to disable some of the touch interaction
   // to not hijack page scroll. See Stamen's Checklist for Maps: http://content.stamen.com/stamens-checklist-for-maps
   if (window.self !== window.top) {

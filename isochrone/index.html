@@ -20,7 +20,7 @@
     var tooltips = [];
 
     //use osm tiles
-    L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributers'
     }).addTo(map);
@@ -28,7 +28,7 @@
     //click callback
     function onMapClick(e) {
       //build url
-      var url = 'http://localhost:8002/isochrone?json=';
+      var url = 'https://cdn.getyourmap.com/route/5cfd37f7-a316-41b3-a516-910514fb0348/isochrone?json=';
       var json = {
         locations: [{"lat":e.latlng.lat, "lon":e.latlng.lng}],
         costing: "auto",

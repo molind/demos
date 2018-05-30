@@ -138,7 +138,7 @@ app.controller('RouteController', function($scope, $rootScope, $sce, $http) {
     zoom : $rootScope.geobase.zoom,
     zoomControl : true,
   }).setView(manhattan, 13);
-  L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributers'
   }).addTo(map);
@@ -973,8 +973,6 @@ app.controller('RouteController', function($scope, $rootScope, $sce, $http) {
       };
       return transitoptions;
     }
-
-
 
     function setDateTime(dateStr) {
       var dttype = document.getElementsByName("dttype");

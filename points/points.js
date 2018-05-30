@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var form = document.getElementById("inputform");
     form.addEventListener("submit", makePoints);
 
-    map = L.map('map');
-    L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://osm.org">OpenStreetMap contributors</a>',
         maxZoom: 19,
     }).addTo(map);

@@ -18,7 +18,7 @@
       <script>
         //make a map using osm tiles
         var map = L.map('map').setView([16.73, -169.52], 14);
-        L.tileLayer('http://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 19,
           attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributers'
         }).addTo(map);
@@ -82,7 +82,7 @@ Costing: <select id="costing">
     var input;
     function build_url(ll) {
       //build url
-      var url = 'http://localhost:8002/locate?json=';
+      var url = 'https://cdn.getyourmap.com/route/5cfd37f7-a316-41b3-a516-910514fb0348/locate?json=';
       var json = {
         locations: [{
           lat: ll.lat,
